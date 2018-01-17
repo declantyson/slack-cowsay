@@ -63,7 +63,8 @@ app.post('/', function(req,res) {
         "```"
 
     res.json({
-        "text" : cowsay
+        "text" : cowsay,
+        "response_type": "in_channel"
     });
 });
 
