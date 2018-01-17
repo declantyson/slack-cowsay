@@ -1,0 +1,24 @@
+{
+  "name": "slack-cowsay",
+  "version": "0.0.1",
+  "description": "",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Declan Tyson",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "ocelot-pjax": "^0.3.10"
+  }
+}
