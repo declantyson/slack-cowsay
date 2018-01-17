@@ -2,7 +2,8 @@ const package = require('./package.json'),
       http = require('http'),
       express = require('express'),
       bodyParser = require('body-parser'),
-      app = express();
+      app = express(),
+      port = process.env.PORT || 1234;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -58,6 +59,6 @@ app.post('/', function(req,res) {
     });
 });
 
-http.createServer(app).listen(3000);
+http.createServer(app).listen(port);
 
-console.log("App running on 3000");
+console.log(`App running on ${port}`);
