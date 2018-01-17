@@ -36,16 +36,24 @@ app.post('/', function(req,res) {
     if(lines.length === 1) {
         lines[0] = "\< " + lines[0] + " \>";
     } else {
-        lines[0] = "\/ " + lines[0] + " \\";
-        for(let i = 1; i < lines.length - 1; i++) {
-            lines[i] = "| " + lines[i] + " |";
-        }
-        lines[lines.length - 1] = "\\ " + lines[lines.length - 1] + " \/";
+        for(let i = 0; i < lines.length; i++) {
+            let pad = new Array((MAX_LINE_LENGTH - lines[i].length) + 1).join(' '),
+                start = "| ",
+                end = " |";
+            if(i === 0) {
+                start = "\/ ";
+                end = "\\";
+            } else if (i === lines.length) {
+                start = "\\ ";
+                end = " \/";
+            }
 
+            lines[i] = start + lines[i] + pad + end;
+        }
     }
 
     cowsay += lines.join("\n");
-    cowsay += "" +
+    cowsay += "\n" +
         " ----------------------------------------\n" +
         "        \\\\   ^__^\n" +
         "         \\\\  (oo)\\\\_______\n" +
