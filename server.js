@@ -33,23 +33,23 @@ app.post('/', function(req,res) {
         lines[current_line_index] = current_line;
     });
 
-    if(lines.length === 1) {
-        lines[0] = "\< " + lines[0] + " \>";
-    } else {
-        for(let i = 0; i < lines.length; i++) {
-            let pad = new Array((MAX_LINE_LENGTH - lines[i].length) + 1).join(' '),
-                start = "| ",
-                end = " |";
-            if(i === 0) {
-                start = "\/ ";
-                end = "\\";
-            } else if (i === lines.length) {
-                start = "\\ ";
-                end = " \/";
-            }
+    for(let i = 0; i < lines.length; i++) {
+        let pad = new Array((MAX_LINE_LENGTH - lines[i].length) + 1).join(' '),
+            start = "| ",
+            end = " |";
 
-            lines[i] = start + lines[i] + pad + end;
+        if(lines.length === 1) {
+            start = "\< ";
+            end = " \>";
+        } else if(i === 0) {
+            start = "\/ ";
+            end = "\\";
+        } else if (i === lines.length - 1) {
+            start = "\\ ";
+            end = " \/";
         }
+
+        lines[i] = start + lines[i] + pad + end;
     }
 
     cowsay += lines.join("\n");
